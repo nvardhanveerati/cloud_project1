@@ -28,7 +28,7 @@ def process():
                 'encoded_image': str(converted_string, 'utf-8'),
                 'file_name': Img_file.filename
             }
-            
+
             # Send message to SQS queue.
             sqs.send_message(
                 QueueUrl=SQS_request,
@@ -59,7 +59,7 @@ def process():
 
 
 if __name__ == '__main__':
-    from waitress import serve
-    serve(app, host='0.0.0.0', port=3000)
-    # app.run(host=os.getenv('LISTEN', '0.0.0.0'),
-    #         port=int(os.getenv('PORT', '3000')))
+    # from waitress import serve
+    # serve(app, host='0.0.0.0', port=3000)
+    app.run(host=os.getenv('LISTEN', '0.0.0.0'),
+            port=int(os.getenv('PORT', '8000')))
