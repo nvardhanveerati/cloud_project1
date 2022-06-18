@@ -178,5 +178,5 @@ if __name__ == '__main__':
 				flag = False
 				break
 	print("Shuting down current ec2")
-	# os.system('sudo shutdown -h now')
+	os.system('sudo shutdown -h now')
 
