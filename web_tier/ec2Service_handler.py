@@ -31,7 +31,7 @@ def create_instance():
         InstanceType='t2.micro',
         KeyName=key_name,
         InstanceInitiatedShutdownBehavior='terminate',
-        UserData=user_data_script_content,
+        UserData="file://run.sh",
         SecurityGroupIds=[security_grp]
         #IamInstanceProfile={'Arn': ROLE_ARN}
     )
