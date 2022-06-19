@@ -93,25 +93,11 @@ def number_messages_in_queue(sqs_client, queue_url):
 def delete_message(sqs_client, queue_url, receipt_handle):
 	sqs_client.delete_message(QueueUrl = queue_url, ReceiptHandle = receipt_handle)
 
-# poll for messages and recieve if present
-# 
-
 if __name__ == '__main__':
 	try:
 	    sqs_obj = boto3.client('sqs', region_name='us-east-1')
 	except Exception as e:
 		print(e)
-
-	# images = [ "test_0.JPEG", "test_1.JPEG", "test_2.JPEG", "test_3.JPEG", "test_4.JPEG" ]
-
-	# for image in images:
-	# 	im_name = image.split(".")[0]
-	# 	encoded_image = encode_image( "images/" + image).decode("utf-8") 
-	# 	send_message(input_queue_url, sqs_obj, im_name, encoded_image)
-	
-	# print("Sleeping and sent images")
-	# time.sleep(60)
-
 
 	# Till here
 	flag = True
@@ -132,8 +118,7 @@ if __name__ == '__main__':
 		encoded_img = bytes(loaded_response["encoded_image"], 'utf-8')
 		image_name = loaded_response["file_name"]
 
-		print("Got the message: ")
-		print(image_name)
+		print("Recieved the Image: ", image_name)
 
 		image_path = image_name
 
@@ -146,15 +131,14 @@ if __name__ == '__main__':
 		s3_client.Bucket(INPUT_BUCKET).upload_file(image_path, image_name)
 		print('Input image file uploaded to s3!')
 
-		s3_client.Object(OUTPUT_BUCKET, image_name).put(Body=classified_label)
+		s3_client.Object(OUTPUT_BUCKET, str( image_name.split(".")[0] ) ).put(Body=classified_label)
 		print('Output file uploaded to s3!')
 
 		sqs_message_body = {
                 'classification': classified_label,
-                # 'unique_id': identifier,
                 'file_name': image_name
         }
-            # Send message to SQS queue.
+
 		sqs_obj.send_message(
 			QueueUrl=output_queue_url,
 			MessageBody=json.dumps(sqs_message_body)
