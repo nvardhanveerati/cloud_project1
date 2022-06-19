@@ -7,21 +7,22 @@ key_name = 'project1'
 
 
 def create_instance():
+    user_data_script_content = '''#!/bin/bash
+    cd /home/ubuntu/cloud_project1/
+    sudo chmod -R 777 .
+    cd /home/ubuntu/cloud_project1/app_tier
+    touch new_file.txt
+    echo 'new text here' >> new_file.txt
+    su ubuntu -c 'python3 app_module.py > execution_logs.txt'
+    touch after_run.txt'''
+
     # user_data_script_content = '''
     # #!/bin/bash
-    # cd /home/ubuntu/cloud_project1/app_tier
-    # touch new_file.txt
+    # cd /home/ec2-user/cloud_project1/app_tier
+    # touch before.txt
     # python3 app_module.py > execution_logs.txt
-    # touch after_run.txt
+    # touch after.txt
     # '''
-
-    user_data_script_content = '''
-    #!/bin/bash
-    cd /home/ec2-user/cloud_project1/app_tier
-    touch before.txt
-    python3 app_module.py > execution_logs.txt
-    touch after.txt
-    '''
 
 
     instances = ec2_client.run_instances(
