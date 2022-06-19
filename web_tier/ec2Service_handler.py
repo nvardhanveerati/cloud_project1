@@ -8,7 +8,7 @@ except Exception as e:
     print()
 
 security_grp = 'sg-0673f5c56597a0e62'
-ami_id = 'ami-0b77ff7755fb2f9e6'
+ami_id = 'ami-0ccdd16d4988d0878'
 key_name = 'project1'
 
 def create_ec2_instance():
