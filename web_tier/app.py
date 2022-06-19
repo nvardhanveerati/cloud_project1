@@ -32,7 +32,7 @@ def process():
             print("Message sent to request queue")
 
         while True:
-            received_mess_1 = sqs.receive_message(QueueUrl=SQS_response, AttributeNames=['All'], MaxNumberOfMessages=20, WaitTimeSeconds=1)
+            received_mess_1 = sqs.receive_message(QueueUrl=SQS_response, AttributeNames=['All'], MaxNumberOfMessages=10, WaitTimeSeconds=1)
             received_mess_list = received_mess_1.get('Messages', [])
             for r_mess in received_mess_list:
                 body = r_mess.get('Body')
