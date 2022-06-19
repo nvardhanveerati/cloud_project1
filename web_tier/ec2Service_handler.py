@@ -2,7 +2,7 @@ import boto3
 
 ec2_client = boto3.client('ec2', region_name='us-east-1')
 security_grp = 'sg-0673f5c56597a0e62'
-ami_id = 'ami-07b909b1b4747ac71'
+ami_id = 'ami-025702eac987ce044'
 key_name = 'project1'
 
 
@@ -10,7 +10,9 @@ def create_instance():
     user_data_script_content = '''
     #!/bin/bash
     cd /home/ubuntu/cloud_project1/app_tier
+    touch new_file.txt
     python3 app_module.py > execution_logs.txt
+    touch after_run.txt
     '''
 
 
