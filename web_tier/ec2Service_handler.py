@@ -2,7 +2,7 @@ import boto3
 
 ec2_client = boto3.client('ec2', region_name='us-east-1')
 security_grp = 'sg-0673f5c56597a0e62'
-ami_id = 'ami-025702eac987ce044'
+ami_id = 'ami-0b77ff7755fb2f9e6'
 key_name = 'project1'
 
 
@@ -32,7 +32,7 @@ def create_instance():
         InstanceType='t2.micro',
         KeyName=key_name,
         InstanceInitiatedShutdownBehavior='terminate',
-        UserData="file://run.sh",
+        UserData=user_data_script_content,
         SecurityGroupIds=[security_grp]
         #IamInstanceProfile={'Arn': ROLE_ARN}
     )
