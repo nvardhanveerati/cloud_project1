@@ -77,7 +77,7 @@ def send_message(queue_url, sqs_client, name, body):
 def recieve_sqs_message(sqs_client):
     print("Receiving the most recent message")
     try:
-        ret_pack = sqs_client.receive_message(QueueUrl = input_queue_url, AttributeNames = ['SentTimestamp'], MaxNumberOfMessages = 1, MessageAttributeNames = ['All'], VisibilityTimeout = 0, WaitTimeSeconds = 0)
+        ret_pack = sqs_client.receive_message(QueueUrl = input_queue_url, AttributeNames = ['SentTimestamp'], MaxNumberOfMessages = 1, MessageAttributeNames = ['All'], VisibilityTimeout = 15, WaitTimeSeconds = 0)
         return ret_pack 
     except Exception as e:
         print("Unable to receive message from SQS")
