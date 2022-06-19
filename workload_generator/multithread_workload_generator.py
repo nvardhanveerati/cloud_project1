@@ -24,11 +24,13 @@ def send_one_request(image_path):
 
     r = requests.post(url, files=file)
     # Print error message if failed
+    print(r.status_code)
+
     if r.status_code != 200:
         print('sendErr: '+r.url)
     else :       
-        
-        image_msg = image_path.split('images/')[1] + ' uploaded!'
+        print(image_path)
+        image_msg = image_path.split('0/')[1] + ' uploaded!'
         msg = image_msg + '\n' + 'Classification result: ' + r.text
         print(msg)
 

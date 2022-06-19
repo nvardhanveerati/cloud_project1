@@ -20,26 +20,30 @@ def scaling_out():
     num_of_running_instances = len(running_instances)
     print("Total app-instances: ", num_of_running_instances)
 
-    if totalMsgs == 0:
-        return
+    # if totalMsgs == 0:
+    #     return
 
-    if 0 < totalMsgs < 20:
-        if num_of_running_instances < totalMsgs:
-            totalMsgs -= num_of_running_instances
-            for x in range(totalMsgs):
-                ec2Service_handler.create_instance()
+    for x in range(2):
+        ec2Service_handler.create_instance()
 
-    else:
-        if num_of_running_instances < 19:
-            needed_instances = 19 - num_of_running_instances
-            for x in range(needed_instances):
-                ec2Service_handler.create_instance()
-        else:
-            print("REDUCE NUMBER OF INSTANCES!")
+    # if 0 < totalMsgs < 20:
+    #     if num_of_running_instances < totalMsgs:
+    #         totalMsgs -= num_of_running_instances
+    #         for x in range(totalMsgs):
+    #             ec2Service_handler.create_instance()
+
+    # else:
+    #     if num_of_running_instances < 19:
+    #         needed_instances = 19 - num_of_running_instances
+    #         for x in range(needed_instances):
+    #             ec2Service_handler.create_instance()
+    #     else:
+    #         print("REDUCE NUMBER OF INSTANCES!")
 
 
 if __name__ == '__main__':
-    while True:
-        print('Start Scaling Out')
-        scaling_out()
-        time.sleep(5)
+    scaling_out()
+    # while True:
+    #     print('Start Scaling Out')
+    #     scaling_out()
+    #     time.sleep(5)

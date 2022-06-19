@@ -1,7 +1,7 @@
 import boto3
 
 ec2_client = boto3.client('ec2', region_name='us-east-1')
-# security_grp = 'sg-0af2c70167ab8690b'
+security_grp = 'sg-0673f5c56597a0e62'
 ami_id = 'ami-07b909b1b4747ac71'
 key_name = 'project1'
 
@@ -10,8 +10,9 @@ def create_instance():
     user_data_script_content = '''
     #!/bin/bash
     cd /home/ubuntu/cloud_project1/app_tier
-    python3 app_module.py
+    python3 app_module.py > execution_logs.txt
     '''
+
 
     instances = ec2_client.run_instances(
         ImageId=ami_id,
@@ -20,8 +21,8 @@ def create_instance():
         InstanceType='t2.micro',
         KeyName=key_name,
         InstanceInitiatedShutdownBehavior='terminate',
-        UserData=user_data_script_content
-        # SecurityGroupIds=[security_grp],
+        UserData=user_data_script_content,
+        SecurityGroupIds=[security_grp]
         #IamInstanceProfile={'Arn': ROLE_ARN}
     )
     print('Creating instance:', instances['Instances'][0]['InstanceId'])

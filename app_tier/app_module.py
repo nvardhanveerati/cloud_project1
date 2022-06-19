@@ -137,13 +137,9 @@ if __name__ == '__main__':
 
 		image_path = image_name
 
-		print(image_path)
-		print(encoded_img)
 		decode_image_and_write(image_path, encoded_img)
 
 		classified_label = classify_image(image_path)
-
-		print(image_path, classified_label)
 
 		s3_client = boto3.resource('s3', region_name='us-east-1')
 
@@ -168,9 +164,9 @@ if __name__ == '__main__':
 
 
 		delete_message(sqs_client = sqs_obj, queue_url = input_queue_url, receipt_handle = rec_handle)
-		print("sleeping for 15 secs")
-		time.sleep(15)
-		print()
+		# print("sleeping for 15 secs")
+		# time.sleep(15)
+		# print()
 		if(number_messages_in_queue(sqs_obj,input_queue_url)==0):
 			print("Polling for 30 secs")
 			time.sleep(30)
