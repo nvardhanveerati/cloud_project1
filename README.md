@@ -37,4 +37,4 @@ python3 cloud_project1/web_tier/app.py
 ```
 python3 cloud_project1/web_tier/scalingOut.py
 ```
-5. Point the workload generating code to the web-tier endpoint and run the workload generator code.
+5. Point the workload generating code to the web-tier endpoint and run the multithreaded workload generator code.
