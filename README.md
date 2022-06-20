@@ -26,15 +26,17 @@ AWS S3 input bucket:         new-input-bucket
 AWS S3 outut bucket:         output-imagedataset-bucket
 ```
 ### **Execution Instructions:**
-1. Setup the workload generating code.
-2. Log into the web-tier
-3. Run the flask app for the workload to hit:
-
+1. Log in to the web-tier instance.
+2. Run the flask app for the workload to hit using the below command
 ```
 python3 cloud_project1/web_tier/app.py
 ```
-4. Run the scale out script to perform auto-scaling:
+3. Run the scaling-out script to perform auto-scaling:
 ```
 python3 cloud_project1/web_tier/scalingOut.py
 ```
-5. Point the workload generating code to the web-tier endpoint and run the multithreaded workload generator code.
+4. Setup the multithread workload generator code to hit the web-tier’s endpoint.
+5. Execute the generator with a specific number of images in the following format
+```
+python multithread_workload_generator.py --num_request <NUMBER_OF_IMAGES> --url '<WEB-TIER ENDPOINT>' --image_folder "<PATH_TO_IMAGES_FOLDER>"
+```
