@@ -1,10 +1,3 @@
-# Cloud Computing: Group Project 1 - IAAS
-
-### Group Members
-#### Nithya Vardhan Reddy Veerati
-#### Anuj Dharurkar
-#### Kshitij Srivastava
-
 ### **Overview:**
 In this project, a cloud application to perform image recognition was developed. It consists of a web-tier and app-tiers that are instantiated on the basis of the load of inputs. 
 The web-tier determines the number of app-tier instances that need to be created to distribute the load and perform the classification.
@@ -16,14 +9,14 @@ To run it, please use an environment which has these requirements installed.
 
 ### **AWS component details:**
 ```
-Web-tier endpoint:           http://18.207.244.202:8000
-AWS EC2 apptier image:       ami-0ccdd16d4988d0878
+Web-tier endpoint:           x
+AWS EC2 apptier image:       x
 AWS SQS Request queue name:  RequestQueue
-AWS SQS Request queue URL:   https://sqs.us-east-1.amazonaws.com/013922704123/RequestQueue
+AWS SQS Request queue URL:   x
 AWS SQS Response queue name: ResponseQueue
-AWS SQS Response queue URL:  https://sqs.us-east-1.amazonaws.com/013922704123/ResponseQueue
-AWS S3 input bucket:         new-input-bucket
-AWS S3 outut bucket:         output-imagedataset-bucket
+AWS SQS Response queue URL:  x
+AWS S3 input bucket:         x
+AWS S3 outut bucket:         x
 ```
 ### **Execution Instructions:**
 1. Log in to the web-tier instance.
