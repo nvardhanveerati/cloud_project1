@@ -17,10 +17,10 @@ import sys
 import time
 
 
-input_queue_url = "https://sqs.us-east-1.amazonaws.com/013922704123/RequestQueue"
-output_queue_url = "https://sqs.us-east-1.amazonaws.com/013922704123/ResponseQueue"
-INPUT_BUCKET = "new-input-bucket"
-OUTPUT_BUCKET = "output-imagedataset-bucket"
+input_queue_url = "https://sqs.us-east-1.amazonaws.com/<Resource1>"
+output_queue_url = "https://sqs.us-east-1.amazonaws.com/<Resource2>"
+INPUT_BUCKET = "<Resource7>"
+OUTPUT_BUCKET = "<Resource8>"
 
 
 def encode_image(image_path):
