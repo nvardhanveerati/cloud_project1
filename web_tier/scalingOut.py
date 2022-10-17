@@ -3,8 +3,8 @@ import boto3
 import ec2Service_handler as ec2_utils
 
 client = boto3.client('sqs', region_name='us-east-1')
-SQS_request = 'https://sqs.us-east-1.amazonaws.com/013922704123/RequestQueue'
-web_tier_instanceID = 'i-045b26529675b8375'
+SQS_request = 'https://sqs.us-east-1.amazonaws.com/<Resource6>'
+web_tier_instanceID = '<Resource7>'
 
 
 def scaling_out():
