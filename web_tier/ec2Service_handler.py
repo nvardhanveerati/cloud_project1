@@ -7,9 +7,9 @@ except Exception as e:
     print(e)
     print()
 
-security_grp = 'sg-0673f5c56597a0e62'
-ami_id = 'ami-0ccdd16d4988d0878'
-key_name = 'project1'
+security_grp = '<Resource3>'
+ami_id = '<Resource4>'
+key_name = '<Resource5>'
 
 def create_ec2_instance():
     content_script = '''#!/bin/bash
