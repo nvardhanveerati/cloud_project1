@@ -12,8 +12,8 @@ app = Flask(__name__)
 app.secret_key = "something unique"
 
 sqs = boto3.client('sqs', region_name='us-east-1')
-SQS_request = 'https://sqs.us-east-1.amazonaws.com/013922704123/RequestQueue'
-SQS_response = 'https://sqs.us-east-1.amazonaws.com/013922704123/ResponseQueue'
+SQS_request = 'https://sqs.us-east-1.amazonaws.com/<Resource1>'
+SQS_response = 'https://sqs.us-east-1.amazonaws.com/<Resource2>'
 
 @app.before_request
 def make_session_permanent():
